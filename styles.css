@@ -375,14 +375,38 @@ footer {
 }
 
 
-/* Fondo oscuro al abrir el menú */
-body.menu-open::after {
-  content: "";
+
+
+
+/* Modal - fondo oscuro */
+.image-modal {
+  display: none; /* oculto por defecto */
   position: fixed;
-  top: 60px;
+  z-index: 9999;
   left: 0;
+  top: 0;
   width: 100%;
-  height: calc(100vh - 60px);
-  background: rgba(0,0,0,0.4);
-  z-index: 98;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Imagen dentro del modal */
+.modal-content-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+/* Botón de cerrar */
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 10000;
 }

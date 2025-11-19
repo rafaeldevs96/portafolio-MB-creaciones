@@ -38,3 +38,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById("image-modal");
+  const modalImg = document.getElementById("modal-img");
+  const closeBtn = document.getElementById("close-modal");
+
+  if (!modal || !modalImg || !closeBtn) {
+    console.error('Modal elements not found. Check that #image-modal and children exist in HTML.');
+    return;
+  }
+
+  document.querySelectorAll(".img-arreglos").forEach(img => {
+    img.addEventListener("click", () => {
+      modal.style.display = "flex";
+      // usa data-src si quieres una imagen más grande: img.dataset.full
+      modalImg.src = img.src;
+      // opcional: para accesibilidad
+      modalImg.alt = img.alt || '';
+    });
+  });
+
+  // Cerrar al tocar la X
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+    modalImg.src = ""; // limpia el src (opcional)
+  });
+
+  // Cerrar al tocar fuera de la imagen
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+      modalImg.src = "";
+    }
+  });
+
+  // cerrar con Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      modal.style.display = 'none';
+      modalImg.src = '';
+    }
+  });
+});
